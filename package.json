@@ -1,6 +1,6 @@
 {
   "name": "hubot-kokoro.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "kokoro.io hubot adapter",
   "main": "src/kokoro.io.coffee",
   "repository": "git@github.com:mohemohe/hubot-kokoro.io.git",

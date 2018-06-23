@@ -35,9 +35,10 @@ class KokoroIo extends Adapter
 
   chat: (body) ->
     id = body.id
+    channel = body.channel.id
     user = body.display_name
     message = body.plaintext_content
-    @robot.logger.info "onChat #{id}: @#{user} '#{message}'"
+    @robot.logger.info "onChat #{channel}: @#{user} '#{message}'"
     @robot.logger.debug body
 
     textMessage = new TextMessage user, message, id

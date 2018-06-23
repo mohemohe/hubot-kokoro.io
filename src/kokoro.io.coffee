@@ -17,11 +17,21 @@ kokoro = require 'kokoro-io'
 class KokoroIo extends Adapter
   send: (envelope, strings...) ->
     for str in strings
-      @kokoroIo.Api.Bot.postChannelMessage envelope.room, "#{str}"
+      message = "#{str}"
+      @robot.logger.info "onSend #{envelope.room}: #{message}"
+      @kokoroIo.Api.Bot.postChannelMessage envelope.room, message
 
   reply: (envelope, strings...) ->
     for str in strings
-      @kokoroIo.Api.Bot.postChannelMessage envelope.room, "@#{envelope.user} #{str}"
+      message = ""
+      h = /^(#+)\s.*$/i
+      if str.match h
+        hs = h.exec(str)[1]
+        message = "#{hs} @#{envelope.user} #{str.slice hs.length+1}"
+      else
+        message = "@#{envelope.user} #{str}"
+      @robot.logger.info "onSend #{envelope.room}: #{message}"
+      @kokoroIo.Api.Bot.postChannelMessage envelope.room, message
 
   chat: (body) ->
     id = body.id

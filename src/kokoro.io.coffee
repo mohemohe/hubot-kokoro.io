@@ -19,7 +19,7 @@ class KokoroIo extends Adapter
     for str in strings
       message = "#{str}"
       @robot.logger.info "onSend #{envelope.room}: #{message}"
-      @kokoroIo.Api.Bot.postChannelMessage envelope.room, message
+      @kokoroIo.Api.Bot.postChannelMessage envelope.room, { message }
 
   reply: (envelope, strings...) ->
     for str in strings
@@ -31,7 +31,7 @@ class KokoroIo extends Adapter
       else
         message = "@#{envelope.user} #{str}"
       @robot.logger.info "onSend #{envelope.room}: #{message}"
-      @kokoroIo.Api.Bot.postChannelMessage envelope.room, message
+      @kokoroIo.Api.Bot.postChannelMessage envelope.room, { message }
 
   chat: (body) ->
     id = body.id

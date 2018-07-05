@@ -27,9 +27,9 @@ class KokoroIo extends Adapter
       h = /^(#+)\s.*$/i
       if str.match h
         hs = h.exec(str)[1]
-        message = "#{hs} @#{envelope.user} #{str.slice hs.length+1}"
+        message = "#{hs} @#{envelope.message.screen_name} #{str.slice hs.length+1}"
       else
-        message = "@#{envelope.user} #{str}"
+        message = "@#{envelope.message.screen_name} #{str}"
       @robot.logger.info "onSend #{envelope.room}: #{message}"
       @kokoroIo.Api.Bot.postChannelMessage envelope.room, { message }
 
@@ -42,6 +42,8 @@ class KokoroIo extends Adapter
     @robot.logger.debug body
 
     textMessage = new TextMessage user, message, id
+    textMessage.display_name = user
+    textMessage.screen_name = body.profile.screen_name
     textMessage.raw = body
     textMessage.room = body.channel.id
     @receive textMessage

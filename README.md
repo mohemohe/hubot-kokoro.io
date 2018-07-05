@@ -4,7 +4,7 @@ kokoro.io hubot adapter
 ## install
 
 ```bash
-yarn add mohemohe/hubot-kokoro.io
+yarn add hubot-kokoro.io
 ```
 
 ## usage
@@ -12,7 +12,7 @@ yarn add mohemohe/hubot-kokoro.io
 ```bash
 export HUBOT_KOKOROIO_ACCESSTOKEN='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 export HUBOT_KOKOROIO_CALLBACKSECRET='YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
-hubot -a kokoro.io -n mohemohe-testbot
+hubot -a kokoro.io -n your-bot-name
 ```
 
-`-n`でアカウント名を指定しないと`res.respond`できません
+kokoro.ioのAPI制限により、`-n`でアカウント名を指定しないと`res.respond`できません

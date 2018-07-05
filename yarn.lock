@@ -19,8 +19,8 @@
     "@types/node" "*"
 
 "@types/node@*":
-  version "10.3.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.4.tgz#c74e8aec19e555df44609b8057311052a2c84d9e"
+  version "10.5.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.1.tgz#d578446f4abff5c0b49ade9b4e5274f6badaadfc"
 
 "@types/ws@^5.1.2":
   version "5.1.2"
@@ -428,9 +428,9 @@ isarray@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
 
-kokoro-io@mohemohe/kokoro.io.js:
-  version "0.1.0"
-  resolved "https://codeload.github.com/mohemohe/kokoro.io.js/tar.gz/28a384e52d43f830b87327d9a71ef5d99a58fe7c"
+kokoro-io@^0.6.1:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/kokoro-io/-/kokoro-io-0.6.2.tgz#123b66b1c571050acb71f84b447577aeeab31dea"
   dependencies:
     "@types/form-data" "^2.2.1"
     "@types/node-fetch" "^2.1.1"
@@ -778,7 +778,7 @@ vhost@~3.0.1:
   resolved "https://registry.yarnpkg.com/vhost/-/vhost-3.0.2.tgz#2fb1decd4c466aa88b0f9341af33dc1aff2478d5"
 
 ws@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-5.2.0.tgz#9fd95e3ac7c76f6ae8bcc868a0e3f11f1290c33e"
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-5.2.1.tgz#37827a0ba772d072a843c3615b0ad38bcdb354eb"
   dependencies:
     async-limiter "~1.0.0"

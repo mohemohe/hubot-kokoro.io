@@ -21,6 +21,7 @@ class KokoroIo extends Adapter {
     strings = strings.reduce((acc, val) => acc.concat(val), []);
     return new Promise(async (resolve) => {
       for (const string of strings) {
+        this.robot.logger.info(`onSend ${envelope.room}: '${string}'`);
         await this.kokoroIo.Api.Bot.postChannelMessage(envelope.room, { message: string });
       }
       resolve();

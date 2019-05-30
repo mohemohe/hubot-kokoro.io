@@ -13,10 +13,32 @@
  *
  */
 
-const {Adapter, TextMessage} = require.main.require('hubot');
-const kokoro = require('kokoro-io');
+let Adapter;
+let TextMessage;
+let kokoro;
+try {
+  const hubot = require('hubot');
+  Adapter = hubot.Adapter;
+  TextMessage = hubot.TextMessage;
+} catch {
+  const prequire = require('parent-require');
+  const hubot = prequire('hubot');
+  Adapter = hubot.Adapter;
+  TextMessage = hubot.TextMessage;
+}
+try {
+  kokoro = require('kokoro-io');
+} catch {
+  const prequire = require('parent-require');
+  kokoro = prequire('kokoro-io');
+}
 
 class KokoroIo extends Adapter {
+  constructor(...args) {
+    super(...args)
+    Object.setPrototypeOf(this, new.target.prototype);
+  }
+
   send(envelope, ...strings) {
     strings = strings.reduce((acc, val) => acc.concat(val), []);
     return new Promise(async (resolve) => {
@@ -50,7 +72,9 @@ class KokoroIo extends Adapter {
     this.robot.logger.info(`onChat ${channel}: @${user} '${message}'`);
     this.robot.logger.debug(body);
 
-    const textMessage = new TextMessage(user, message, id);
+    const textMessage = new TextMessage({
+      room: channel,
+    }, message, id);
     textMessage.display_name = user;
     textMessage.screen_name = body.profile.screen_name;
     textMessage.raw = body;
@@ -99,8 +123,6 @@ ___  __    ________  ___  __    ________  ________  ________      ___  ________
 
     this.emit('connected');
   }
-
-
 }
 
 exports.use = (robot) => new KokoroIo(robot);

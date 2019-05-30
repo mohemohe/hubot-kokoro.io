@@ -1,16 +1,16 @@
 {
   "name": "hubot-kokoro.io",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "kokoro.io hubot adapter",
   "main": "src/kokoro.io.js",
   "repository": "git@github.com:mohemohe/hubot-kokoro.io.git",
   "author": "mohemohe",
   "license": "WTFPL",
   "dependencies": {
-    "hubot": "^2.19.0",
-    "kokoro-io": "^0.6.1"
+    "kokoro-io": "^0.9.2",
+    "parent-require": "^1.0.0"
   },
-  "devDependencies": {
-    "coffeescript": "^2.3.1"
+  "peerDependencies": {
+    "hubot": "^2.19.0||>=3.3.2"
   }
 }

@@ -68,7 +68,7 @@ class KokoroIo extends Adapter {
     const id = body.id;
     const channel = body.channel.id;
     const user = body.display_name;
-    const message = body.plaintext_content;
+    const message = body.raw_content || body.plaintext_content;
     this.robot.logger.info(`onChat ${channel}: @${user} '${message}'`);
     this.robot.logger.debug(body);
 
